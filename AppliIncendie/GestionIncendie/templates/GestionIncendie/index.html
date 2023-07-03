@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page d'accueil</title>
-</head>
-<body>
+{% extends 'GestionIncendie/base.html' %}
+
+{% block content %}
     <h1>Ceci est la page d'accueil</h1>
-</body>
-</html>
+    <div id="map"></div>
+    <script id="data" incendies="{{ incendies }}" dp="{{ directionsP }}" ccdrf="{{ ccdrf }}" sf="{{ secteursF }}"
+            pe="{{ pointsEaux }}" pv="{{postesVigies}}" tpf="{{ tranchePF }}"></script>
+{% endblock %}
