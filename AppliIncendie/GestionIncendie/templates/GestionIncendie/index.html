@@ -1,8 +1,24 @@
 {% extends 'GestionIncendie/base.html' %}
 
 {% block content %}
-    <h1>Ceci est la page d'accueil</h1>
-    <div id="map"></div>
-    <script id="data" incendies="{{ incendies }}" dp="{{ directionsP }}" ccdrf="{{ ccdrf }}" sf="{{ secteursF }}"
+    <main>
+        <h1 id="entete">Ceci est la page d'accueil</h1>
+        <section id="content">
+            <div id="map"></div>
+            <div id="details">
+                <div class="indication">
+                    <h1 id="indice">Cliquer pour voir les détails</h1>
+                </div>
+                <div id="details_objet">
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <script id="data" dp="{{ directionsP }}" ccdrf="{{ ccdrf }}" sf="{{ secteursF }}"
             pe="{{ pointsEaux }}" pv="{{postesVigies}}" tpf="{{ tranchePF }}"></script>
 {% endblock %}

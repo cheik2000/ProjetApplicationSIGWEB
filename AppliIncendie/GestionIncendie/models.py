@@ -27,7 +27,7 @@ class Ccdrf(models.Model):
         ('MOKRISSET', 'MOKRISSET'), ('TATTOFT', 'TATTOFT')
     )
     # Clé étrangère
-    dp_ccdrf = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD")
+    dp_ccdrf = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD", related_name="ccdrf")
     nom_ccdrf = models.CharField(primary_key=True, max_length=80, verbose_name="Nom du CCDRF", choices=choix)
     comment_ccdrf = models.TextField(blank=True, null=True, max_length=500, verbose_name="Description")
     geometry_ccdrf = models.MultiPolygonField(srid=4326)
@@ -47,7 +47,7 @@ class SecteurForestier(models.Model):
         ('KRIMDA', 'KRIMDA'), ('ASSILAH', 'ASSILAH'), ('NOUADER', 'NOUADER')
     )
     # clé étrangère
-    ccdrf = models.ForeignKey(Ccdrf, on_delete=models.CASCADE, verbose_name="Nom du CCDRF")
+    ccdrf = models.ForeignKey(Ccdrf, on_delete=models.CASCADE, verbose_name="Nom du CCDRF", related_name="secteurs")
 
     nom_sf = models.CharField(primary_key=True, max_length=80, verbose_name="Nom du Secteur forestier", choices=choix)
     comment_sf = models.TextField(blank=True, null=True, max_length=500, verbose_name="Description")
@@ -59,7 +59,7 @@ class SecteurForestier(models.Model):
 
 class Incendie(models.Model):
     # Clé étrangère
-    dp_icd = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD")
+    dp_icd = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD", related_name="incendies")
 
     id_incendie = models.BigAutoField(primary_key=True)
     date_eclosion = models.DateField(verbose_name="Date d'éclosion", null=True, blank=True)
@@ -77,7 +77,7 @@ class Incendie(models.Model):
 
 class PointEau(models.Model):
     # Clé étrangère
-    dp_pe = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD")
+    dp_pe = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD", related_name="points_eaux")
 
     id_pe = models.BigAutoField(primary_key=True)
     nom_pe = models.CharField(verbose_name="Lieu", max_length=50, null=True, blank=True)
@@ -94,7 +94,7 @@ class PointEau(models.Model):
 
 class PosteVigie(models.Model):
     # Clé étrangère
-    dp_pv = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD")
+    dp_pv = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD", related_name="postes_vigies")
 
     id_pv = models.BigAutoField(primary_key=True)
     nom_pv = models.CharField(verbose_name="Lieu", max_length=50, null=True, blank=True)
@@ -110,7 +110,7 @@ class PosteVigie(models.Model):
 
 class TracheeParFeu(models.Model):
     # Clé étrangère
-    dp_tpf = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD")
+    dp_tpf = models.ForeignKey(DirectionProvinciale, on_delete=models.CASCADE, verbose_name="Nom de la DPEFLCD", related_name="tpf")
 
     id_tpf = models.BigAutoField(primary_key=True)
     etat_tpf = models.CharField(verbose_name="Etat", choices=(("BON", "BON"), ("MOYEN", "MOYEN"),

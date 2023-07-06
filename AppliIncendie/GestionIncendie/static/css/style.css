@@ -1,4 +1,38 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    height: 88vh;
+}
+
+
+
+section#content {
+    height: 100%;
+    display: grid;
+    grid-template-areas: "map map map details";
+}
+
 #map {
-    height: 96vh;
-    width: 60%;
+    grid-area: map;
+    height: 100%;
+}
+
+#details {
+    grid-area: details;
+    padding: 15px;
+    overflow-y: scroll;
+}
+
+
+div.invisible {
+    display: none;
+}
+
+table {
+    width: 100%;
 }

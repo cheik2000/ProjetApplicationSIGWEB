@@ -1,0 +1,90 @@
+
+<div class="details-dp">
+  <h1>DPEFLCD : <span>{{ nom_dp }}</span></h1>
+  <h2>Sous structures</h2>
+  <table border="1">
+    <tr>
+      <th>Nom</th>
+      <th>Effectif</th>
+    </tr>
+    <tr>
+      <td>CCDRF</td>
+      <td>{{ nbr_ccdrf }}</td>
+    </tr>
+    <tr>
+      <td>SF</td>
+      <td>{{ nbr_sf }}</td>
+    </tr>
+  </table>
+  <h2>Infrastructures</h2>
+  <table border="1">
+    <tr>
+      <th>Catégorie</th>
+      <th>Nombre</th>
+    </tr>
+    <tr>
+      <td>Postes vigies</td>
+      <td>{{ nbr_pv }}</td>
+    </tr>
+    <tr>
+      <td>Points d'eau</td>
+      <td>{{ nbr_pe }}</td>
+    </tr>
+    <tr>
+      <td>Tranchées par feu</td>
+      <td>{{ nbr_tpf }}</td>
+    </tr>
+  </table>
+  <h2>Statistiques sur les incendies</h2>
+  <table border="1">
+    <tr>
+      <td colspan="2">Données d'incendies globales</td>
+    </tr>
+    <tr>
+      <th>Nombre total d'éclosions</th>
+      <td>{{ nbr_total_icd }}</td>
+    </tr>
+    <tr>
+      <th>Surface totale brûlée</th>
+      <td>{{ surface_total_brl.surf_total }}</td>
+    </tr>
+    <tr>
+      <th>Surface brûlé par incendie</th>
+      <td>{{ surf_per_icd }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Données d'incendies cette année</td>
+    </tr>
+    <tr>
+      <th>Nombre d'éclosions</th>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>Surface totale brûlée</th>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>Surface brûlée par incendie</th>
+      <td>20</td>
+    </tr>
+  </table>
+  <div>
+    <h2>Evolution du nombre d'éclosions et des surfaces brûlées</h2>
+    <table border="1">
+      <tr>
+        <th>Année</th>
+        <th>Nombre d'éclosions</th>
+        <th>Surface brûlée</th>
+      </tr>
+      {% for e in surface_par_an %}
+      <tr>
+        <td>{{ e.date_eclosion__year }}</td>
+        <td>{{ e.nbr_incendies }}</td>
+        <td>{{ e.surface|floatformat:2 }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="graphique-nombre"></div>
+    <div class="graphique-surfaces"></div>
+  </div>
+</div>
