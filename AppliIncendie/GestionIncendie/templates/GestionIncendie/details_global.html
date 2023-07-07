@@ -1,21 +1,24 @@
 
 
-
 <div class="details-dp">
-  <h1>Secteur forestier : <span>{{ nom_sf }}</span></h1>
-  <h2>Structures d'appartenance</h2>
+  <h1>DREFLCD : <span>RIF</span></h1>
+  <h2>Sous structures</h2>
   <table border="1">
     <tr>
       <th>Catégorie</th>
-      <th>Nom</th>
+      <th>Nombre</th>
     </tr>
     <tr>
       <td>DPEFLCD</td>
-      <td>{{ nom_dp }}</td>
+      <td>{{ nbr_dp }}</td>
     </tr>
     <tr>
       <td>CCDRF</td>
-      <td>{{ nom_ccdrf }}</td>
+      <td>{{ nbr_ccdrf }}</td>
+    </tr>
+    <tr>
+      <td>Secteur forestier</td>
+      <td>{{ nbr_sf }}</td>
     </tr>
   </table>
   <h2>Infrastructures</h2>
@@ -47,7 +50,7 @@
       <td>{{ surface_total_brl|floatformat:2 }}</td>
     </tr>
     <tr>
-      <th>Surface brûlé par incendie</th>
+      <th>Surface brûlée par incendie</th>
       <td>{{ surf_per_icd|floatformat:2 }}</td>
     </tr>
     <tr>

@@ -46,26 +46,26 @@
     </tr>
     <tr>
       <th>Surface totale brûlée</th>
-      <td>{{ surface_total_brl.surf_total }}</td>
+      <td>{{ surface_total_brl|floatformat:2 }}</td>
     </tr>
     <tr>
       <th>Surface brûlé par incendie</th>
-      <td>{{ surf_per_icd }}</td>
+      <td>{{ surf_per_icd|floatformat:2 }}</td>
     </tr>
     <tr>
       <td colspan="2">Données d'incendies cette année</td>
     </tr>
     <tr>
       <th>Nombre d'éclosions</th>
-      <td>200</td>
+      <td>{{ nbr_current }}</td>
     </tr>
     <tr>
       <th>Surface totale brûlée</th>
-      <td>2000</td>
+      <td>{{ surface_curent|floatformat:2 }}</td>
     </tr>
     <tr>
       <th>Surface brûlée par incendie</th>
-      <td>20</td>
+      <td>{{ srf_par_icd_current|floatformat:2 }}</td>
     </tr>
   </table>
   <div>
@@ -84,7 +84,9 @@
       </tr>
       {% endfor %}
     </table>
-    <div class="graphique-nombre"></div>
-    <div class="graphique-surfaces"></div>
+    <div id="graphiques">
+      {{ div_graph_surface|safe }}
+      {{ div_graph_nbr_icd|safe }}
+    </div>
   </div>
 </div>

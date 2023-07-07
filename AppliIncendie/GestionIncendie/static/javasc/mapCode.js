@@ -18,10 +18,19 @@ var coordonnees_clic = null;
 var url_detail_ccdrf = "";
 var url_detail_sf = "";
 
+// ---------------- Chargement des détails d'incendies --------------
+function InfoGlobal () {
+    var url_objet = 'http://127.0.0.1:8000/detail_global';
 
-// Chargement des Incendies
-function resultAjaxJSON (reponse) {
-    console.log(reponse);
+    $.ajax(
+        {
+            url: url_objet,
+            type: 'GET',
+            success: function(data) {
+                console.log(data);
+              $('#details_objet').html(data);
+            }
+        });
 };
 
 function InfoRequest (id_object, object_class) {
@@ -32,7 +41,7 @@ function InfoRequest (id_object, object_class) {
     } else if (object_class === 'ccdrf') {
         console.log("CCDRF : " + id_object);
         var url_objet = `http://127.0.0.1:8000/detail_ccdrf/${id_object}`;
-    } else if (object_class === 'dp') {
+    } else if (object_class === 'sf') {
         console.log("Secteur forestier : " + id_object);
         var url_objet = `http://127.0.0.1:8000/detail_sf/${id_object}`;
     };
@@ -89,7 +98,7 @@ function handleCcdrfClick(event) {
     // On fixe les coordonnées de la zone clickée
     coordonnees_clic = event.latlng
     modifierStylePolygon(event);
-    modifyDetailContentManager('ccdrf', event.target.feature.id)
+    InfoRequest(event.target.feature.id, 'ccdrf');
 };
 
 
@@ -98,7 +107,7 @@ function handleSfClick(event) {
     // On fixe les coordonnées de la zone clickée
     coordonnees_clic = event.latlng
     modifierStylePolygon(event);
-    modifyDetailContentManager('sf', event.target.feature.id)
+    InfoRequest(event.target.feature.id, 'sf');
 };
 
 
@@ -110,7 +119,7 @@ function handleMapClick(event) {
         couche_ccdrf.resetStyle();
         couche_sf.resetStyle();
     };
-    $('#details_objet').html("<p></p>");
+    InfoGlobal();
 };
 
 
@@ -215,7 +224,10 @@ function initialiserCarte (){
     // Création du controleur : Affiche un widget contenant les fondsCarto et overlayLayers
     var layerControl = L.control.layers(fondsCarto, overlayLayers, {
         collapsed: true
-     }).addTo(map)
+     }).addTo(map);
+
+     // Chargement des détails global
+     InfoGlobal()
      };
 
 

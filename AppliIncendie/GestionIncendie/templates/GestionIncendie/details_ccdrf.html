@@ -1,6 +1,99 @@
 
-
-
-<div class="details-ccdrf">
-
+<div class="details-dp">
+  <h1>CCDRF : <span>{{ nom_ccdrf }}</span></h1>
+  <h2>Structure supérieure</h2>
+  <table border="1">
+    <tr>
+      <th>Catégorie</th>
+      <th>Nom</th>
+    </tr>
+    <tr>
+      <td>DPEFLCD</td>
+      <td>{{ nom_dp }}</td>
+    </tr>
+  </table>
+  <h2>Sous structures</h2>
+  <table border="1">
+    <tr>
+      <th>Nom</th>
+      <th>Effectif</th>
+    </tr>
+    <tr>
+      <td>SF</td>
+      <td>{{ nbr_sf }}</td>
+    </tr>
+  </table>
+  <h2>Infrastructures</h2>
+  <table border="1">
+    <tr>
+      <th>Catégorie</th>
+      <th>Nombre</th>
+    </tr>
+    <tr>
+      <td>Postes vigies</td>
+      <td>{{ nbr_pv }}</td>
+    </tr>
+    <tr>
+      <td>Points d'eau</td>
+      <td>{{ nbr_pe }}</td>
+    </tr>
+    <tr>
+      <td>Tranchées par feu</td>
+      <td>{{ nbr_tpf }}</td>
+    </tr>
+  </table>
+  <h2>Statistiques sur les incendies</h2>
+  <table border="1">
+    <tr>
+      <td colspan="2">Données d'incendies globales</td>
+    </tr>
+    <tr>
+      <th>Nombre total d'éclosions</th>
+      <td>{{ nbr_total_icd }}</td>
+    </tr>
+    <tr>
+      <th>Surface totale brûlée</th>
+      <td>{{ surface_total_brl|floatformat:2 }}</td>
+    </tr>
+    <tr>
+      <th>Surface brûlé par incendie</th>
+      <td>{{ surf_per_icd|floatformat:2 }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Données d'incendies cette année</td>
+    </tr>
+    <tr>
+      <th>Nombre d'éclosions</th>
+      <td>{{ nbr_current }}</td>
+    </tr>
+    <tr>
+      <th>Surface totale brûlée</th>
+      <td>{{ surface_curent|floatformat:2 }}</td>
+    </tr>
+    <tr>
+      <th>Surface brûlée par incendie</th>
+      <td>{{ srf_par_icd_current|floatformat:2 }}</td>
+    </tr>
+  </table>
+  <div>
+    <h2>Evolution du nombre d'éclosions et des surfaces brûlées</h2>
+    <table border="1" id="last">
+      <tr>
+        <th>Année</th>
+        <th>Nombre d'éclosions</th>
+        <th>Surface brûlée</th>
+      </tr>
+      {% for e in surface_par_an %}
+      <tr>
+        <td>{{ e.date_eclosion__year }}</td>
+        <td>{{ e.nbr_incendies }}</td>
+        <td>{{ e.surface|floatformat:2 }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div id="graphiques">
+      {{ div_graph_surface|safe }}
+      {{ div_graph_nbr_icd|safe }}
+    </div>
+  </div>
 </div>

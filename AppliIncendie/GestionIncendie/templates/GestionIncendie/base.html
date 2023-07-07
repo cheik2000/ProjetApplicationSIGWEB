@@ -13,6 +13,16 @@
     <script src="{% static 'javasc/mapCode.js' %}"></script>
 </head>
 <body>
+<div id="entete">
+    <h1>Application sur les incendies de forêts</h1>
+    <p>
+        Ici, vous pouvez voir les statistiques sur les incendies au niveau des différentes DPEFLCD, CCDRF, Secteurs forestiers
+        au sein de la DREFLCD-RIF.
+        Attention : Les lieux d'éclosion et surfaces ainsi que les dates ont été créées juste pour la démonstration!
+        Activer les couches que vous voulez (CCDRF, DPEFLCD, Secteur forestiers) puis cliquer sur celle désirée pour voir
+        les informations afférentes dans la partie droite
+    </p>
+</div>
 
 {% block content %} {% endblock %}
 

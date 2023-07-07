@@ -102,7 +102,7 @@ class PosteVigie(models.Model):
     altitude_pv = models.FloatField(verbose_name="Altitude", null=True, blank=True)
     etat_pe = models.CharField(verbose_name="Etat", choices=(("FONCTIONNEL", "FONCTIONNEL"),
                                                              ("NON FONCTIONNEL", "NON FONCTIONNEL")), max_length=80)
-    geometrie_pe = models.MultiPointField(srid=4326)
+    geometrie_pv = models.MultiPointField(srid=4326)
 
     def __str__(self):
         return  "Poste vigie " + str(self.id_pv) + " à " + str(self.nom_pv)

@@ -3,18 +3,57 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: Arial, 'Sans serif';
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+h1 {
+    font-size: 20px;
+    text-align: center;
+}
+
+#entete  {
+    background-color: #f7f7f7;
+
+}
+
+#entete h1 {
+    font-size: 25px;
+    width: 35%;
+    margin: 0 auto;
+    border-bottom: 4px solid white;
+    padding: 10px
+}
+
+h2 {
+    font-size: 18px;
+    border-left: 2px solid black;
+    padding: 10px;
+    margin: 20px 20px 20px 40px;
+}
+
+#entete p {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 20px;
 }
 
 main {
-    height: 88vh;
+    height: 83vh;
 }
-
-
 
 section#content {
     height: 100%;
     display: grid;
-    grid-template-areas: "map map map details";
+    grid-template-areas: "map map map map details";
 }
 
 #map {
@@ -28,11 +67,34 @@ section#content {
     overflow-y: scroll;
 }
 
-
-div.invisible {
-    display: none;
-}
-
 table {
     width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style des lignes de données impaires */
+table tr:nth-child(odd) {
+  background-color: #e1e1e1;
+}
+
+/* Style des lignes de données paires */
+table tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+/* Style des cellules de la table */
+table td, table th {
+  padding: 8px;
+  text-align: center;
+}
+
+/* Style de l'en-tête de la table */
+table th {
+  background-color: #f7f7f7;
+  color: black;
+  font-weight: normal;
+}
+
+#indice {
+    color: red;
 }
